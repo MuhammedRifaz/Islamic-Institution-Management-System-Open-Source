@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1A4731;
+  --color-primary-hover: #143825;
+  --color-secondary: #C9A84C;
+  --color-secondary-hover: #b39540;
+  --color-surface: #FCFAF5;
+  --color-surface-dim: #F2EFE8;
+  --color-ink: #0a0a0a;
+  --color-ink-mid: #4A4A4A;
+  
+  --font-heading: "Outfit", sans-serif;
+  --font-ui: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --radius-sm: 0.25rem;
+  --radius-md: 0.75rem; /* 12px */
+  --radius-lg: 1.125rem; /* 18px */
+}
+
+@layer base {
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+  }
+
+  /* Focus ring for accessibility */
+  *:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(252, 250, 245, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+  }
+  
+  .glass-dark {
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .shadow-tint {
+    box-shadow: 0 10px 25px -5px rgba(26, 71, 49, 0.08), 0 8px 10px -6px rgba(26, 71, 49, 0.04);
+  }
+
+  .hover-scale {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .hover-scale:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+  
+  .active-press {
+    transition: transform 0.1s ease;
+  }
+  
+  .active-press:active {
+    transform: translateY(1px) scale(0.98);
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
